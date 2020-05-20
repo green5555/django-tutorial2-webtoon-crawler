@@ -1,0 +1,26 @@
+<head>
+<% bootstrap %>
+<% chartjs %>
+</head>
+<body>
+    <form action="/" method="post">
+        {% csrf_token %}
+        <select name="webtoon" id="">
+            {% for select_option in options %}
+                <option value="{{select_option}}">{{select_option}}
+                </option>
+            {% endfor %}
+        </select>
+
+        {% if options|length > 0 %}
+            <button type="submit">긁어오기</button>
+        {% endif %}
+    </form>
+
+    {% for episode in episode_list %}
+        <div>
+            <span>{{episode.title}}</span>
+            <span>{{episode.url}}</span>
+        </div>
+    {% endfor %}
+</body>
